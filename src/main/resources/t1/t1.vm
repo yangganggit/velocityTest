@@ -1,0 +1,83 @@
+hello,shaoling
+$name
+$d.name   ##访问变量属性
+${d.name}  ##访问变量属性
+===
+##设置变量值
+#set($name="hello")
+#set($n2="${name},world")
+$n2
+
+##List
+	#set($list=["aa","bb"])
+	循环示例List：
+	#foreach($ele in $list)
+		当前元素【${velocityCount}】是：$ele
+	#end
+##大小写敏感
+
+##Map
+	#set($map={"a1":"aa","b1":"bb"})
+	循环示例Map：
+	#foreach($key in ${map.keySet()})
+		当前元素【${velocityCount}】是：$key --> ${map.get($key)}
+	#end
+##条件语句
+
+#* 
+	这里是块注释...
+*#
+
+#**
+	这里是文档注释...
+*#
+
+#* 条件语句 
+#if(condition)
+#elseif(condition)
+#else
+#end
+*#
+
+#set($name="hello")
+#set($a=2)
+a=${a} ,b=$b ，c=$name
+#if($a >2 )
+  $a 大于 2
+#elseif($a == 2)
+  $a 等于2
+#else
+  $a 小于2
+#end
+
+##关系和逻辑
+&& || 
+#set($f1=false)
+#set($f2=false)
+#if($f1 && $f2)
+ 	都为true
+#elseif($f1 || $f2)
+	有一个true
+#elseif(!($f1 && $f2))
+	都为false
+#end
+
+##宏 ，等效于函数
+#* 
+1)宏的定义
+	#macro(宏的名称 $参数1 ...)
+		函数体
+	#end	
+2)宏的调用
+	#宏的名称($参数 ...)
+*#
+
+#* 包含
+	1)#include,可引入多个文件逗号分隔，被引入的文件不会被模板引擎解析
+	2)#parse,引入单个文件，被引入的文件内容会被模板引擎解析，即可递归
+*#
+
+#*  转移字符'\'的使用
+*#
+
+内置对象：$request、$response、$session
